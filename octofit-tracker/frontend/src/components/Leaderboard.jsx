@@ -7,10 +7,8 @@ export default function Leaderboard() {
 
   useEffect(() => {
     const loadLeaderboard = async () => {
-      const baseUrl = import.meta.env.VITE_CODESPACE_NAME ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev` : 'http://localhost:8000';
-
       try {
-        const response = await fetch(`${baseUrl}/api/activities/`);
+        const response = await fetch(import.meta.env.VITE_CODESPACE_NAME ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard` : 'http://localhost:8000/api/leaderboard');
         if (!response.ok) {
           throw new Error(`Request failed: ${response.status}`);
         }

@@ -7,10 +7,8 @@ export default function Activities() {
 
   useEffect(() => {
     const loadActivities = async () => {
-      const baseUrl = import.meta.env.VITE_CODESPACE_NAME ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev` : 'http://localhost:8000';
-
       try {
-        const response = await fetch(`${baseUrl}/api/activities/`);
+        const response = await fetch(import.meta.env.VITE_CODESPACE_NAME ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities` : 'http://localhost:8000/api/activities');
         if (!response.ok) {
           throw new Error(`Request failed: ${response.status}`);
         }
