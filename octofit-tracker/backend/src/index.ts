@@ -8,6 +8,7 @@ import './config/database';
 
 const app = express();
 const port = Number(process.env.PORT || 8000);
+const host = '0.0.0.0';
 const codespaceName = process.env.CODESPACE_NAME;
 const baseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
@@ -24,6 +25,6 @@ app.get('/', (_req, res) => {
   res.json({ message: 'OctoFit Tracker backend is running', baseUrl });
 });
 
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`Backend server listening on ${baseUrl}`);
 });

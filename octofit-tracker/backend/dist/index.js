@@ -12,6 +12,7 @@ const workouts_1 = __importDefault(require("./routes/workouts"));
 require("./config/database");
 const app = (0, express_1.default)();
 const port = Number(process.env.PORT || 8000);
+const host = '0.0.0.0';
 const codespaceName = process.env.CODESPACE_NAME;
 const baseUrl = codespaceName
     ? `https://${codespaceName}-8000.app.github.dev`
@@ -25,7 +26,7 @@ app.use('/api/workouts', workouts_1.default);
 app.get('/', (_req, res) => {
     res.json({ message: 'OctoFit Tracker backend is running', baseUrl });
 });
-app.listen(port, () => {
+app.listen(port, host, () => {
     console.log(`Backend server listening on ${baseUrl}`);
 });
 //# sourceMappingURL=index.js.map
