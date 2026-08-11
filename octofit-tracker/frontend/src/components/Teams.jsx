@@ -7,9 +7,7 @@ export default function Teams() {
 
   useEffect(() => {
     const loadTeams = async () => {
-      const baseUrl = import.meta.env.VITE_CODESPACE_NAME
-        ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
-        : 'http://localhost:8000';
+      const baseUrl = import.meta.env.VITE_CODESPACE_NAME ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev` : 'http://localhost:8000';
 
       try {
         const response = await fetch(`${baseUrl}/api/teams/`);
